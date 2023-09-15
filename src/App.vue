@@ -1,4 +1,7 @@
 <script setup lang="ts">
+const fn()=>{
+
+}
 </script>
 
 <template>
