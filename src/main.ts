@@ -1,4 +1,13 @@
 import { createApp } from "vue";
-import App from "./App.vue";
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
+import zhCn from "element-plus/dist/locale/zh-cn.mjs";
+import "virtual:svg-icons-register";
 
-createApp(App).mount("#app");
+import App from "@/App.vue";
+
+createApp(App)
+  .use(ElementPlus, {
+    locale: zhCn, // element-plus国际化配置（默认英文）
+  })
+  .mount("#app");

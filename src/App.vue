@@ -1,8 +1,12 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div>新增</div>
+  <div>
+    <h1>SVG测试</h1>
+    <svg>
+      <use xlink:href="#icon-phone"></use>
+    </svg>
+  </div>
 </template>
 
 <style scoped></style>
