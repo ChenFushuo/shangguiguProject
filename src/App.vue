@@ -1,12 +1,15 @@
-<script setup lang="ts"></script>
-
 <template>
   <div>
-    <h1>SVG测试</h1>
-    <svg>
-      <use xlink:href="#icon-phone"></use>
-    </svg>
+    <h1>测试</h1>
   </div>
 </template>
 
-<style scoped></style>
+<script setup lang="ts"></script>
+
+<style lang="scss" scoped>
+div {
+  h1 {
+    color: $color;
+  }
+}
+</style>
