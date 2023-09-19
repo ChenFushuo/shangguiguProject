@@ -4,7 +4,7 @@ import { ElMessage } from "element-plus";
 
 // 利用axios对象的create方法  创建axios实例
 const request = axios.create({
-  baseUrrl: import.meta.env.VITE_APP_BASE_API,
+  baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 5000,
 });
 
@@ -21,7 +21,7 @@ request.interceptors.response.use(
   (error) => {
     // 失败回调，一般处理http网络错误
     // 定义一个变量
-    let meaaage = "";
+    let message = "";
     const status = error.response.status;
     switch (status) {
       case 401:
