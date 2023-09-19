@@ -2,8 +2,8 @@
 export const constantRouter = [
   {
     path: "/",
-    redirect: "/index",
-    name: "redirectIndex",
+    component: () => import("@/layout/index.vue"),
+    name: "layout",
   },
   {
     path: "/login",
