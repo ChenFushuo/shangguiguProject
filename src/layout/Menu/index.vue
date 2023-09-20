@@ -2,9 +2,14 @@
   <template v-for="item in menuList" :key="item.path">
     <!-- 一级，没有子路由 -->
     <template v-if="!item.children">
-      <el-menu-item :index="item.path" v-if="!item.meta.hidden">
+      <el-menu-item
+        :index="item.path"
+        v-if="!item.meta.hidden"
+        @click="goRoute">
         <template #title>
-          <span>图标&nbsp;</span>
+          <el-icon>
+            <component :is="item.meta.icon"></component>
+          </el-icon>
           <span>{{ item.meta.title }}</span>
         </template>
       </el-menu-item>
@@ -15,7 +20,9 @@
         v-if="!item.children[0].meta.hidden"
         :index="item.children[0].path">
         <template #title>
-          <span>图标&nbsp;</span>
+          <el-icon>
+            <component :is="item.children[0].meta.icon"></component>
+          </el-icon>
           <span>{{ item.children[0].meta.title }}</span>
         </template>
       </el-menu-item>
@@ -24,6 +31,9 @@
     <template v-if="item.children && item.children.length > 1">
       <el-sub-menu v-if="!item.meta.hidden" :index="item.path">
         <template #title>
+          <el-icon>
+            <component :is="item.meta.icon"></component>
+          </el-icon>
           <span>{{ item.meta.title }}</span>
         </template>
         <Menu :menuList="item.children"></Menu>
@@ -35,6 +45,9 @@
 <script setup lang="ts">
 // 接收负组件传递的路由信息数据
 defineProps(["menuList"]);
+const goRoute = (val: any) => {
+  console.log(val.index);
+};
 </script>
 
 <script lang="ts">

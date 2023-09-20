@@ -6,15 +6,18 @@ export const constantRouter = [
     name: "Login", // 命名路由
     meta: {
       title: "登录",
+      icon: "Promotion",
       hidden: true, // 路由标题在菜单中是否隐藏 false不隐藏
     },
   },
+
   {
     path: "/",
     component: () => import("@/layout/index.vue"),
     name: "layout",
     meta: {
       title: "layout",
+      icon: "Promotion",
       hidden: false,
     },
     children: [
@@ -23,25 +26,20 @@ export const constantRouter = [
         component: () => import("@/views/home/index.vue"),
         meta: {
           title: "首页",
-          hidden: false,
-        },
-      },
-      {
-        path: "/ceshi",
-        component: () => import("@/views/home/index.vue"),
-        meta: {
-          title: "测试",
+          icon: "HomeFilled",
           hidden: false,
         },
       },
     ],
   },
+
   {
     path: "/404",
     component: () => import("@/views/404/index.vue"),
     name: "404", // 命名路由
     meta: {
       title: "404",
+      icon: "DocumentDelete",
       hidden: true,
     },
   },
@@ -51,6 +49,7 @@ export const constantRouter = [
     name: "redirect404",
     meta: {
       hidden: true,
+      icon: "DataLine",
     },
   },
 ];
