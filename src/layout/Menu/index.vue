@@ -18,7 +18,8 @@
     <template v-if="item.children && item.children.length === 1">
       <el-menu-item
         v-if="!item.children[0].meta.hidden"
-        :index="item.children[0].path">
+        :index="item.children[0].path"
+        @click="goRoute">
         <template #title>
           <el-icon>
             <component :is="item.children[0].meta.icon"></component>
@@ -45,8 +46,12 @@
 <script setup lang="ts">
 // 接收负组件传递的路由信息数据
 defineProps(["menuList"]);
+// 获取路由器对象
+import { useRouter } from "vue-router";
+let $router = useRouter();
+
 const goRoute = (val: any) => {
-  console.log(val.index);
+  $router.push(val.index);
 };
 </script>
 

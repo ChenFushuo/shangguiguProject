@@ -15,14 +15,17 @@
     <!-- 顶部导航 -->
     <div class="layout_tabbar"></div>
     <!-- 内容展示区域 -->
-    <div class="layout_main"></div>
+    <div class="layout_main">
+      <Main></Main>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-// 引入logo，路由组件
-import Logo from "./Logo/index.vue";
-import Menu from "./Menu/index.vue";
+// 引入logo，菜单、mian主题组件
+import Logo from "./logo/index.vue";
+import Menu from "./menu/index.vue";
+import Main from "./main/index.vue";
 // 取仓库的数据
 import useUserStore from "@/store/modules/user";
 let userStore = useUserStore();
