@@ -1,18 +1,15 @@
 // 引入全局清除样式
-@import './reset.scss';
+@import "./reset.scss";
 
 // 滚动条样式
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: $base-menu-background;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 ::-webkit-scrollbar-thumb {
-  width: 10px;
-  background-color: rgb(193, 193, 193, 0.4);
+  width: 5px;
+  background-color: $base-menu-background;
   border-radius: 10px;
-  &:hover {
-    background-color: rgb(193, 193, 193, 0.5);
-  }
 }

@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import setting from '@/setting'
+import setting from "@/setting";
 </script>
 
 <style lang="scss" scoped>
