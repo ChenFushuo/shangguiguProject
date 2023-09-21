@@ -4,7 +4,8 @@ import { defineStore } from "pinia";
 let useLayoutSettingStore = defineStore("settingStore", {
   state: () => {
     return {
-      fold: false, // 控制菜单是否收起
+      collapse: false, // 控制菜单是否收起
+      refsh: false, // 控制刷新效果
     };
   },
 });

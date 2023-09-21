@@ -1,7 +1,16 @@
 <template>
-  <div>首页页面</div>
+  <div><img :src="userStore.avatar" alt="" />{{ userStore.username }}</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted } from "vue";
+// 获取用户仓库
+import useUserStore from "@/store/modules/user";
+let userStore = useUserStore();
+
+onMounted(() => {
+  userStore.userInfo();
+});
+</script>
 
 <style lang="scss" scoped></style>

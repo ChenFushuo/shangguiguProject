@@ -1,6 +1,7 @@
 import Layout from "@/layout/index.vue";
 // 对外暴露配置常量路由
 export const constantRouter = [
+  // 登录
   {
     path: "/login",
     component: () => import("@/views/login/index.vue"),
@@ -15,10 +16,11 @@ export const constantRouter = [
     path: "/",
     component: Layout,
     name: "Layout",
-    redirect: "/home",
     meta: {
-      title: "layout",
+      title: "",
+      icon: "",
     },
+    redirect: "/home",
     children: [
       {
         path: "/home",
@@ -45,11 +47,11 @@ export const constantRouter = [
     path: "/acl",
     component: Layout,
     name: "Acl",
-    redirect: "/acl/user",
     meta: {
       title: "权限管理",
       icon: "Lock",
     },
+    redirect: "/acl/user",
     children: [
       {
         path: "/acl/user",
@@ -85,11 +87,11 @@ export const constantRouter = [
     path: "/product",
     component: Layout,
     name: "Product",
-    redirect: "/product/trademark",
     meta: {
       title: "商品管理",
       icon: "Goods",
     },
+    redirect: "/product/trademark",
     children: [
       {
         path: "/product/trademark",
@@ -143,9 +145,9 @@ export const constantRouter = [
   // *暂无此路由
   {
     path: "/:pathMatch(.*)*",
-    redirect: "/404",
     meta: {
       hidden: true,
     },
+    redirect: "/404",
   },
 ];

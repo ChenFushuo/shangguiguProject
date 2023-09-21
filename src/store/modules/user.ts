@@ -1,7 +1,7 @@
 // 用户相关的pinia仓库
 import { defineStore } from "pinia";
 // 引入接口
-import { reqLogin } from "@/api/users/user";
+import { reqLogin, reqUserInfo } from "@/api/users/user";
 // 引入类型
 import { loginFormData, loginResponseData } from "@/api/users/type";
 import UserState from "./types/type";
@@ -16,6 +16,8 @@ const useUserStore = defineStore("User", {
     return {
       token: GET_TOKEN(), //用户的token 身份令牌,内存中取值，持久化存储方案
       menuRoutes: constantRouter, // 仓库存储生成菜单需要的路由信息
+      username: "",
+      avatar: "",
     };
   },
   //  逻辑
@@ -34,6 +36,14 @@ const useUserStore = defineStore("User", {
       } else {
         // login error 201
         return Promise.reject(new Error(result.data.message));
+      }
+    },
+    // 获取用户信息
+    async userInfo() {
+      let result = await reqUserInfo();
+      if (result.code == 200) {
+        this.username = result.data.checkUser.username;
+        this.avatar = result.data.checkUser.avatar;
       }
     },
   },

@@ -1,16 +1,22 @@
 <template>
-  <div class="logo" v-if="setting.logoHidden">
+  <div class="logo" v-if="setting.logoHidden" @click="goBackHome">
     <img :src="setting.logo" alt="" />
     <transition name="logoTitle">
-      <span v-if="!LayOutSettingStore.fold"> {{ setting.title }}</span>
+      <span v-if="!LayOutSettingStore.collapse"> {{ setting.title }}</span>
     </transition>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useRouter } from "vue-router";
 import setting from "@/setting";
 import useLayoutSettingStore from "@/store/modules/setting";
 let LayOutSettingStore = useLayoutSettingStore(); //layout全局设置
+
+let $router = useRouter();
+const goBackHome = () => {
+  $router.push("/");
+};
 </script>
 <script lang="ts">
 export default {

@@ -9,11 +9,11 @@ import type {
 // 统一管理接口请求
 enum API {
   LOGIN_URL = "/user/login",
-  USERINFO_URL = "/user/info",
+  USERINFO_URL = "user/info",
 }
 // 导出请求函数
 export const reqLogin = (data: loginFormData) =>
   request.post<any, loginResponseData>(API.LOGIN_URL, data);
 
 export const reqUserInfo = () =>
-  request.post<userResponseData>(API.USERINFO_URL);
+  request.get<any, userResponseData>(API.USERINFO_URL);

@@ -3,13 +3,13 @@
     <!-- 左侧菜单 -->
     <div
       class="layout_slider"
-      :class="{ fold: LayoutSettingStore.fold ? true : false }">
+      :class="{ collapse: LayoutSettingStore.collapse ? true : false }">
       <Logo></Logo>
       <!-- 滚动组件 -->
       <el-scrollbar class="scrollbar">
         <!-- 菜单组件 -->
         <el-menu
-          :collapse="LayoutSettingStore.fold ? true : false"
+          :collapse="LayoutSettingStore.collapse ? true : false"
           :default-active="onRouters"
           background-color="#001529"
           text-color="rgb(245, 245, 245)"
@@ -25,13 +25,13 @@
     <!-- 顶部导航 -->
     <div
       class="layout_tabbar"
-      :class="{ fold: LayoutSettingStore.fold ? true : false }">
+      :class="{ collapse: LayoutSettingStore.collapse ? true : false }">
       <Tabbar></Tabbar>
     </div>
     <!-- 内容展示区域 -->
     <div
       class="layout_main"
-      :class="{ fold: LayoutSettingStore.fold ? true : false }">
+      :class="{ collapse: LayoutSettingStore.collapse ? true : false }">
       <Main></Main>
     </div>
   </div>
@@ -84,7 +84,7 @@ export default {
         border-right: none;
       }
     }
-    &.fold {
+    &.collapse {
       width: $base-menu-min-width;
     }
   }
@@ -100,7 +100,7 @@ export default {
     border-bottom: 1px solid #ccc;
     transition: all 0.3s;
 
-    &.fold {
+    &.collapse {
       width: calc(100% - $base-menu-min-width);
       left: $base-menu-min-width;
     }
@@ -117,7 +117,7 @@ export default {
     overflow: auto;
     transition: all 0.3s;
 
-    &.fold {
+    &.collapse {
       width: calc(100% - $base-menu-min-width);
       left: $base-menu-min-width;
     }

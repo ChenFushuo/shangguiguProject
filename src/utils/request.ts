@@ -1,4 +1,5 @@
 // 进行axios二次封装:使用请求响应拦截器
+import useUserStore from "@/store/modules/user";
 import axios from "axios";
 import { ElMessage } from "element-plus";
 
@@ -9,6 +10,11 @@ const request = axios.create({
 });
 
 request.interceptors.request.use((config) => {
+  let userStore = useUserStore();
+  if (userStore.token) {
+    config.headers.token = userStore.token;
+  }
+
   // 返回配置对象，headers(请求头),给服务器携带公共参数
   return config;
 });
@@ -45,7 +51,7 @@ request.interceptors.response.use(
       message,
     });
     return Promise.reject(error);
-  },
+  }
 );
 // 导出request
 export default request;
