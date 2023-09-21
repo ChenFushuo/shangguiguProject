@@ -1,12 +1,15 @@
 <template>
   <div class="layotu_container">
     <!-- 左侧菜单 -->
-    <div class="layout_slider">
+    <div
+      class="layout_slider"
+      :class="{ fold: LayoutSettingStore.fold ? true : false }">
       <Logo></Logo>
       <!-- 滚动组件 -->
       <el-scrollbar class="scrollbar">
         <!-- 菜单组件 -->
         <el-menu
+          :collapse="LayoutSettingStore.fold ? true : false"
           :default-active="onRouters"
           background-color="#001529"
           text-color="rgb(245, 245, 245)"
@@ -20,35 +23,44 @@
       </el-scrollbar>
     </div>
     <!-- 顶部导航 -->
-    <div class="layout_tabbar">
+    <div
+      class="layout_tabbar"
+      :class="{ fold: LayoutSettingStore.fold ? true : false }">
       <Tabbar></Tabbar>
     </div>
     <!-- 内容展示区域 -->
-    <div class="layout_main">
+    <div
+      class="layout_main"
+      :class="{ fold: LayoutSettingStore.fold ? true : false }">
       <Main></Main>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-// 引入路由对象
+import { computed } from "vue";
 import { useRoute } from "vue-router";
-let $route = useRoute();
-// 引入logo，菜单、mian主题组件
 import Logo from "./logo/index.vue";
 import Menu from "./menu/index.vue";
 import Main from "./main/index.vue";
 import Tabbar from "./tabbar/index.vue";
-// 取仓库的数据
 import useUserStore from "@/store/modules/user";
-let userStore = useUserStore();
+import useLayoutSettingStore from "@/store/modules/setting";
 
-// 设置选中的菜单
-import { computed } from "vue";
+let $route = useRoute(); // 路由对象
+let userStore = useUserStore(); //用户仓库
+let LayoutSettingStore = useLayoutSettingStore(); //layout全局设置
+// 设置activeMenu
 const onRouters = computed(() => {
   if ($route.meta.activeMenu) return $route.meta.activeMenu;
   return $route.path;
 });
+</script>
+
+<script lang="ts">
+export default {
+  name: "Layout",
+};
 </script>
 
 <style lang="scss" scoped>
@@ -64,11 +76,16 @@ const onRouters = computed(() => {
     height: 100vh;
     background-color: $base-menu-background;
     color: $base-color-white;
+    transition: all 0.3s;
+
     .scrollbar {
       height: calc(100vh - $base-menu-logo-height);
       .el-menu {
         border-right: none;
       }
+    }
+    &.fold {
+      width: $base-menu-min-width;
     }
   }
 
@@ -81,6 +98,12 @@ const onRouters = computed(() => {
     top: 0;
     left: $base-menu-width;
     border-bottom: 1px solid #ccc;
+    transition: all 0.3s;
+
+    &.fold {
+      width: calc(100% - $base-menu-min-width);
+      left: $base-menu-min-width;
+    }
   }
 
   .layout_main {
@@ -92,6 +115,12 @@ const onRouters = computed(() => {
     left: $base-menu-width;
     padding: 20px;
     overflow: auto;
+    transition: all 0.3s;
+
+    &.fold {
+      width: calc(100% - $base-menu-min-width);
+      left: $base-menu-min-width;
+    }
   }
 }
 </style>

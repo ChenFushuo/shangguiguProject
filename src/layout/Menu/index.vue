@@ -44,10 +44,10 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 // 接收负组件传递的路由信息数据
 defineProps(["menuList"]);
 // 获取路由器对象
-import { useRouter } from "vue-router";
 let $router = useRouter();
 
 const goRoute = (val: any) => {
