@@ -6,14 +6,23 @@
       <!-- 滚动组件 -->
       <el-scrollbar class="scrollbar">
         <!-- 菜单组件 -->
-        <el-menu background-color="#001529" text-color="white">
+        <el-menu
+          :default-active="onRouters"
+          background-color="#001529"
+          text-color="rgb(245, 245, 245)"
+          active-text-color="rgb(96, 155, 132)"
+          :router="true"
+          :collapse-transition="true"
+          :unique-opened="true">
           <!-- 根据路由动态生成菜单 -->
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
     <!-- 顶部导航 -->
-    <div class="layout_tabbar"></div>
+    <div class="layout_tabbar">
+      <Tabbar></Tabbar>
+    </div>
     <!-- 内容展示区域 -->
     <div class="layout_main">
       <Main></Main>
@@ -22,13 +31,24 @@
 </template>
 
 <script lang="ts" setup>
+// 引入路由对象
+import { useRoute } from "vue-router";
+let $route = useRoute();
 // 引入logo，菜单、mian主题组件
 import Logo from "./logo/index.vue";
 import Menu from "./menu/index.vue";
 import Main from "./main/index.vue";
+import Tabbar from "./tabbar/index.vue";
 // 取仓库的数据
 import useUserStore from "@/store/modules/user";
 let userStore = useUserStore();
+
+// 设置选中的菜单
+import { computed } from "vue";
+const onRouters = computed(() => {
+  if ($route.meta.activeMenu) return $route.meta.activeMenu;
+  return $route.path;
+});
 </script>
 
 <style lang="scss" scoped>
@@ -57,6 +77,7 @@ let userStore = useUserStore();
     width: calc(100% - $base-menu-width);
     height: $base-tabbar-height;
     background: $base-tabbar-background;
+    color: $base-color-black;
     top: 0;
     left: $base-menu-width;
     border-bottom: 1px solid #ccc;
