@@ -32,9 +32,7 @@
     <div
       class="layout_main"
       :class="{ collapse: LayoutSettingStore.collapse ? true : false }">
-      <div class="main_container">
-        <Main></Main>
-      </div>
+      <Main></Main>
     </div>
   </div>
 </template>
@@ -115,18 +113,10 @@ export default {
     background-color: $base-appmain-background;
     top: $base-tabbar-height;
     left: $base-menu-width;
-    padding: 10px;
+    padding: 15px;
     overflow: auto;
     transition: all 0.3s;
     box-sizing: border-box;
-    .main_container {
-      padding: 20px;
-      height: 100%;
-      background-color: $base-color-white;
-      box-sizing: border-box;
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
 
     &.collapse {
       width: $base-main-width-collapse;

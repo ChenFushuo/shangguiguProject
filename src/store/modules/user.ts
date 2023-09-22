@@ -31,7 +31,7 @@ const useUserStore = defineStore("User", {
         // 本地存储，持久化存储
         SET_TOKEN(result.data as string);
         // 保证async返回一个成功的promise
-        return "ok";
+        return result;
       } else {
         // login error 201
         return Promise.reject(new Error(result.data));
@@ -60,7 +60,7 @@ const useUserStore = defineStore("User", {
         this.username = "";
         this.avatar = "";
         REMOVE_TOKEN();
-        return "ok";
+        return result;
       } else {
         return Promise.reject(new Error("退出登录失败"));
       }

@@ -34,6 +34,7 @@
 <script setup lang="ts">
 import useLayoutSettingStore from "@/store/modules/setting";
 import useUserStore from "@/store/modules/user";
+import { ElMessage } from "element-plus";
 import { useRoute, useRouter } from "vue-router";
 
 let layoutSettingStore = useLayoutSettingStore();
@@ -60,7 +61,12 @@ const fullscreen = () => {
 const logout = async () => {
   // 发送服务器退出登录请求
   // 清空本地存储所有用户信息
-  await userStore.userLogout();
+  let res = await userStore.userLogout();
+  ElMessage({
+    type: "success",
+    message: "退出" + res.message,
+    duration: 1000,
+  });
   $router.push({ path: "/login", query: { redirect: $route.path } });
 };
 </script>
@@ -80,9 +86,6 @@ export default {
     height: 50px;
     margin: auto 10px;
     border-radius: 50%;
-  }
-  .el-dropdown {
-    color: $base-color-white;
   }
 }
 </style>
