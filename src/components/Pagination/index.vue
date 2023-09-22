@@ -5,7 +5,7 @@
     :page-size="props.limit"
     :page-sizes="[5, 10, 20, 30, 40]"
     background
-    layout="prev, pager, next, jumper, ->, sizes, total"
+    layout="prev, pager, next, jumper, sizes, total"
     :total="props.listCount"
     @update:page-size="handleSizeChange"
     @update:current-page="handleCurrentChange" />

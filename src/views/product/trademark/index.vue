@@ -16,7 +16,7 @@
       v-model:page="listParams.page"
       v-model:limit="listParams.limit"
       :list-count="listCount"
-      :load-list="getList"
+      :get-list="getList"
       :disabled="listLoading" />
   </el-card>
 </template>
@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 
-const listCount = ref(40); // 总条数
+const listCount = ref(100); // 总条数
 const listLoading = ref(false);
 const listParams = reactive({
   page: 1, // 当前页码
