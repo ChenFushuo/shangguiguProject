@@ -4,12 +4,14 @@
 // 滚动条样式
 ::-webkit-scrollbar {
   width: 5px;
+  height: 3px;
 }
 ::-webkit-scrollbar-track {
   background-color: rgba(255, 255, 255, 0.8);
 }
 ::-webkit-scrollbar-thumb {
   width: 5px;
-  background-color: $base-menu-background;
+  height: 3px;
+  background-color: $base-scrollbar-background;
   border-radius: 10px;
 }

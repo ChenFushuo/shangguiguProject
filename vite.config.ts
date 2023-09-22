@@ -1,12 +1,11 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
-//引入svg需要用到插件
-import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
-//mock插件提供方法
-import { viteMockServe } from "vite-plugin-mock";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons"; //引入svg需要用到插件
+import { viteMockServe } from "vite-plugin-mock"; //mock插件提供方法
 
-export default defineConfig(({ command }) => {
+export default defineConfig(({ command, mode }) => {
+  let env = loadEnv(mode, process.cwd());
   return {
     plugins: [
       vue(),
@@ -26,6 +25,19 @@ export default defineConfig(({ command }) => {
         scss: {
           javascriptEnabled: true,
           additionalData: '@import "./src/styles/variable.scss";',
+        },
+      },
+    },
+    // 代理跨域
+    server: {
+      proxy: {
+        [env.VITE_APP_BASE_API]: {
+          // 获取服务器地址
+          target: env.VITE_SERVE,
+          // 是否代理跨域
+          changeOrigin: true,
+          // 路径重写
+          rewrite: (path) => path.replace(/^\/api/, ""),
         },
       },
     },

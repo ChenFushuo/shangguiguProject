@@ -37,7 +37,7 @@ router.beforeEach(async (to: any, from: any, next) => {
           ElMessage.error(error);
           // token过期 || 用户手动更改了token
           // 1. 先退出登录，清空用户数据
-          userStore.userLogout();
+          await userStore.userLogout();
           // 退出，重定向到登录页面，携带要去的路由的参数
           next({ path: "login", query: { redirect: to.path } });
         }

@@ -32,7 +32,9 @@
     <div
       class="layout_main"
       :class="{ collapse: LayoutSettingStore.collapse ? true : false }">
-      <Main></Main>
+      <div class="main_container">
+        <Main></Main>
+      </div>
     </div>
   </div>
 </template>
@@ -79,7 +81,7 @@ export default {
     transition: all 0.3s;
 
     .scrollbar {
-      height: calc(100vh - $base-menu-logo-height);
+      height: $base-slider-scrollbar-height;
       .el-menu {
         border-right: none;
       }
@@ -91,7 +93,7 @@ export default {
 
   .layout_tabbar {
     position: fixed;
-    width: calc(100% - $base-menu-width);
+    width: $base-tabbar-width;
     height: $base-tabbar-height;
     background: $base-tabbar-background;
     color: $base-color-black;
@@ -101,24 +103,33 @@ export default {
     transition: all 0.3s;
 
     &.collapse {
-      width: calc(100% - $base-menu-min-width);
+      width: $base-tabbar-width-collapse;
       left: $base-menu-min-width;
     }
   }
 
   .layout_main {
     position: absolute;
-    width: calc(100% - $base-menu-width);
-    height: calc(100vh - $base-tabbar-height);
+    width: $base-main-width;
+    height: $base-main-height;
     background-color: $base-appmain-background;
     top: $base-tabbar-height;
     left: $base-menu-width;
-    padding: 20px;
+    padding: 10px;
     overflow: auto;
     transition: all 0.3s;
+    box-sizing: border-box;
+    .main_container {
+      padding: 20px;
+      height: 100%;
+      background-color: $base-color-white;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
 
     &.collapse {
-      width: calc(100% - $base-menu-min-width);
+      width: $base-main-width-collapse;
       left: $base-menu-min-width;
     }
   }

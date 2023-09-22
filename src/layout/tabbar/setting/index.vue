@@ -57,11 +57,10 @@ const fullscreen = () => {
   }
 };
 // 退出登录
-const logout = () => {
+const logout = async () => {
   // 发送服务器退出登录请求
   // 清空本地存储所有用户信息
-  userStore.userLogout();
-  // 跳转登录页
+  await userStore.userLogout();
   $router.push({ path: "/login", query: { redirect: $route.path } });
 };
 </script>
