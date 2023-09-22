@@ -7,16 +7,14 @@
           class="login_form"
           ref="loginFormRef"
           :model="loginForm"
-          :rules="rules"
-        >
+          :rules="rules">
           <h1>Hello</h1>
           <h2>欢迎来到我的后台</h2>
           <el-form-item prop="username" class="login_form_item">
             <el-input
               class="username_inp"
               :prefix-icon="User"
-              v-model="loginForm.username"
-            ></el-input>
+              v-model="loginForm.username"></el-input>
           </el-form-item>
           <el-form-item prop="password" class="login_form_item">
             <el-input
@@ -24,16 +22,14 @@
               :prefix-icon="Lock"
               show-password
               type="password"
-              v-model="loginForm.password"
-            ></el-input>
+              v-model="loginForm.password"></el-input>
           </el-form-item>
           <el-form-item class="login_form_item">
             <el-button
               class="login_btn"
               type="primary"
               :loading="loading"
-              @click="handleLogin"
-            >
+              @click="handleLogin">
               登 录
             </el-button>
           </el-form-item>
@@ -50,7 +46,7 @@ import { reactive, ref } from "vue";
 // 引入pinia仓库
 import useUserStore from "@/store/modules/user";
 // 引入路由器
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 // 引入自定义工具方法
 import { getTime } from "@/utils/times";
 // 引入element-plus提示框
@@ -59,10 +55,11 @@ import { ElNotification } from "element-plus";
 let useStore = useUserStore(); // 使用pinia仓库
 let loginFormRef = ref();
 let $router = useRouter(); // 使用路由器
+let $route = useRoute(); // 使用路由器
 let loading = ref(false); // 控制按钮加载状态
 let loginForm = reactive({ username: "admin", password: "111111" }); // 初始化表单绑定数据
 // 自定义表单校验规则 账号-密码校验
-const validatorUserName = (rule: any, value: any, callback: viod) => {
+const validatorUserName = (rule: any, value: any, callback: Function) => {
   // rule：校验规则对象  value: 表单元素文本内容 callback：校验通过与否的回调函数
   if (value.length >= 5 && value.length <= 10) {
     callback();
@@ -70,7 +67,7 @@ const validatorUserName = (rule: any, value: any, callback: viod) => {
     callback(new Error("账号长度在6 - 10之间"));
   }
 };
-const validatorPassWord = (rule: any, value: any, callback: viod) => {
+const validatorPassWord = (rule: any, value: any, callback: Function) => {
   // rule：校验规则对象  value: 表单元素文本内容 callback：校验通过与否的回调函数
   if (value.length >= 6 && value.length <= 15) {
     callback();
@@ -106,7 +103,8 @@ const handleLogin = async () => {
       title: `Hi,${getTime()}好`,
     });
     // 请求成功跳转首页，展示数据
-    $router.push("/");
+    let redirect: any = $route.query.redirect;
+    $router.push(redirect || "/");
   } catch (error) {
     // 请求失败，弹出提示
     loading.value = false;

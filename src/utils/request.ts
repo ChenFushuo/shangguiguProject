@@ -43,7 +43,7 @@ request.interceptors.response.use(
         message = "服务异常";
         break;
       default:
-        meaaage = "网络异常";
+        message = "网络异常";
         break;
     }
     ElMessage({

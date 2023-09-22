@@ -24,7 +24,7 @@
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item>退出登录</el-dropdown-item>
+          <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
@@ -34,9 +34,12 @@
 <script setup lang="ts">
 import useLayoutSettingStore from "@/store/modules/setting";
 import useUserStore from "@/store/modules/user";
+import { useRoute, useRouter } from "vue-router";
 
 let layoutSettingStore = useLayoutSettingStore();
 let userStore = useUserStore(); // 用户相关的仓库数据
+let $router = useRouter(); // 获取路由器对象
+let $route = useRoute(); // 获取路由对象
 // 刷新按钮事件
 const uploadRefsh = () => {
   layoutSettingStore.refsh = !layoutSettingStore.refsh;
@@ -52,6 +55,14 @@ const fullscreen = () => {
     // 文档根节点方法（exitFullscreen）退出全屏模式
     document.exitFullscreen();
   }
+};
+// 退出登录
+const logout = () => {
+  // 发送服务器退出登录请求
+  // 清空本地存储所有用户信息
+  userStore.userLogout();
+  // 跳转登录页
+  $router.push({ path: "/login", query: { redirect: $route.path } });
 };
 </script>
 

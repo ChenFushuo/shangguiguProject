@@ -1,14 +1,9 @@
-// 用户相关的pinia仓库
-import { defineStore } from "pinia";
-// 引入接口
-import { reqLogin, reqUserInfo } from "@/api/users/user";
-// 引入类型
-import { loginFormData, loginResponseData } from "@/api/users/type";
+import { defineStore } from "pinia"; // 用户相关的pinia仓库
+import { reqLogin, reqUserInfo } from "@/api/users/user"; // 引入接口
+import { loginFormData, loginResponseData } from "@/api/users/type"; // 引入类型
 import UserState from "./types/type";
-// 操作本地存储的方法
-import { GET_TOKEN, SET_TOKEN } from "@/utils/token";
-// 引入常量菜单
-import { constantRouter } from "@/router/router";
+import { GET_TOKEN, REMOVE_TOKEN, SET_TOKEN } from "@/utils/token"; // 操作本地存储的方法
+import { constantRouter } from "@/router/router"; // 引入常量菜单
 
 const useUserStore = defineStore("User", {
   //  数据
@@ -44,7 +39,19 @@ const useUserStore = defineStore("User", {
       if (result.code == 200) {
         this.username = result.data.checkUser.username;
         this.avatar = result.data.checkUser.avatar;
+        return result;
+      } else {
+        return Promise.reject("获取用户信息失败");
       }
+    },
+    // 退出登录
+    async userLogout() {
+      // 接口通知服务器，本地用户唯一标识失效
+      // 清除本地用户标识、信息
+      this.token = "";
+      this.username = "";
+      this.avatar = "";
+      REMOVE_TOKEN();
     },
   },
   getters: {},

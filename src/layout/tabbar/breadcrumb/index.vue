@@ -36,16 +36,3 @@ export default {
   name: "Breadcrumb",
 };
 </script>
-
-<style lang="scss" scoped>
-.el-breadcrumb {
-  .el-breadcrumb__item {
-    .el-breadcrumb__inner {
-      color: #000000;
-    }
-    .el-breadcrumb__separator {
-      color: white;
-    }
-  }
-}
-</style>

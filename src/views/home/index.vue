@@ -8,9 +8,7 @@ import { onMounted } from "vue";
 import useUserStore from "@/store/modules/user";
 let userStore = useUserStore();
 
-onMounted(() => {
-  userStore.userInfo();
-});
+onMounted(() => {});
 </script>
 
 <style lang="scss" scoped></style>
