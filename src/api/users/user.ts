@@ -5,7 +5,7 @@ import type {
   loginFormData, // 登录参数类型
   loginResponseData, // 登录响应数据类型
   userInfoResponseData, // 用户信息相应数据类型
-} from "./type";
+} from "../type";
 // 统一管理接口请求
 enum API {
   LOGIN_URL = "/admin/acl/index/login",

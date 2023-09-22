@@ -4,7 +4,7 @@ import type {
   loginFormData,
   loginResponseData,
   userInfoResponseData,
-} from "@/api/users/type";
+} from "@/api/type";
 import UserState from "./types/type";
 import { GET_TOKEN, REMOVE_TOKEN, SET_TOKEN } from "@/utils/token"; // 操作本地存储的方法
 import { constantRouter } from "@/router/router"; // 引入常量菜单

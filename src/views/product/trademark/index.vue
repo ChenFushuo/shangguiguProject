@@ -12,34 +12,29 @@
       <el-table-column label="品牌LOGO" align="center"></el-table-column>
       <el-table-column label="操作" align="center"></el-table-column>
     </el-table>
-    <el-pagination
-      v-model:current-page="pageNo"
-      v-model:page-size="pageSize"
-      :page-sizes="[5, 10, 15, 20]"
-      :small="small"
-      :disabled="disabled"
-      :background="background"
-      layout="prev, pager, next, jumper, ->, sizes, total"
-      :total="10"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange" />
+    <pagination
+      v-model:page="listParams.page"
+      v-model:limit="listParams.limit"
+      :list-count="listCount"
+      :load-list="getList"
+      :disabled="listLoading" />
   </el-card>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 
-let pageNo = ref<number>(1);
-let pageSize = ref<number>(5);
-let small = ref(false);
-let background = ref(false);
-let disabled = ref(false);
-
-const handleSizeChange = (val: number) => {
-  console.log(`${val} items per page`);
-};
-const handleCurrentChange = (val: number) => {
-  console.log(`current page: ${val}`);
+const listCount = ref(40); // 总条数
+const listLoading = ref(false);
+const listParams = reactive({
+  page: 1, // 当前页码
+  limit: 10, // 每页条数
+}); // 列表数据查询参数
+const getList = async () => {
+  listLoading.value = true;
+  setTimeout(() => {
+    listLoading.value = false;
+  }, 500);
 };
 </script>
 
