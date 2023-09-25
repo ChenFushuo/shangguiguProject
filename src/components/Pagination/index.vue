@@ -1,4 +1,3 @@
-<!-- src\components\Pagination\index.vue -->
 <template>
   <el-pagination
     :current-page="props.page"
@@ -14,27 +13,6 @@
 <script setup lang="ts">
 import { PropType } from "vue";
 
-/* 使用 TypeScript 纯类型语法声明 props 和默认值 */
-/*
-// 使用 TS 方式声明 props
-interface PropsType {
-  page: number
-  limit: number
-  total: number
-  updateData: () => void
-}
-
-// 定义 props 默认值
-const props = withDefaults(defineProps<PropsType>(), {
-  page: 1,
-  limit: 10,
-  total: 0,
-  updateData: () => {}
-})
-*/
-
-/* 使用运行时声明 */
-/* 这种方式声明 props 也支持类型声明，并且在使用默认值的情况下使用这种方式还直观些 */
 const props = defineProps({
   // 页码
   page: {
@@ -58,7 +36,6 @@ const props = defineProps({
   },
 });
 
-/* 使用 TypeScript 纯类型语法声明 emits */
 interface EmitsType {
   (e: "update:page", page: number): void;
   (e: "update:limit", size: number): void;
@@ -66,13 +43,6 @@ interface EmitsType {
 
 const emit = defineEmits<EmitsType>();
 
-/* 使用运行时声明 */
-/*
-const emit = defineEmits(['update:page', 'update:limit'])
-*/
-
-// elementPlus 将在未来删除 size-change current-change 事件
-// 建议改为监听 update 事件
 const handleCurrentChange = (page: number) => {
   emit("update:page", page);
   props.updateData();
