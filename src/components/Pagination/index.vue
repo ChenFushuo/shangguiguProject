@@ -3,10 +3,10 @@
   <el-pagination
     :current-page="props.page"
     :page-size="props.limit"
-    :page-sizes="[5, 10, 20, 30, 40]"
+    :page-sizes="[3, 5, 7, 9, 11]"
     background
-    layout="prev, pager, next, jumper, sizes, total"
-    :total="props.listCount"
+    layout="prev, pager, next, jumper, ->, sizes, total"
+    :total="props.total"
     @update:page-size="handleSizeChange"
     @update:current-page="handleCurrentChange" />
 </template>
@@ -20,16 +20,16 @@ import { PropType } from "vue";
 interface PropsType {
   page: number
   limit: number
-  listCount: number
-  getList: () => void
+  total: number
+  updateData: () => void
 }
 
 // 定义 props 默认值
 const props = withDefaults(defineProps<PropsType>(), {
   page: 1,
   limit: 10,
-  listCount: 0,
-  getList: () => {}
+  total: 0,
+  updateData: () => {}
 })
 */
 
@@ -47,12 +47,12 @@ const props = defineProps({
     default: 1,
   },
   // 数据总条数
-  listCount: {
+  total: {
     type: Number,
     default: 1,
   },
   // 页码/每页条数变更触发的方法
-  getList: {
+  updateData: {
     type: Function as PropType<() => void>,
     default: () => {},
   },
@@ -75,13 +75,13 @@ const emit = defineEmits(['update:page', 'update:limit'])
 // 建议改为监听 update 事件
 const handleCurrentChange = (page: number) => {
   emit("update:page", page);
-  props.getList();
+  props.updateData();
 };
 
 const handleSizeChange = (size: number) => {
   emit("update:page", 1);
   emit("update:limit", size);
-  props.getList && props.getList();
+  props.updateData && props.updateData();
 };
 </script>
 
