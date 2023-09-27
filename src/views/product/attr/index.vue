@@ -98,6 +98,7 @@ const addOrEditAttr = (row: Attr) => {
   // 切换卡片内部dom结构
   scene.value = 1
   if (!row.id) {
+    resetForm()
     // 新增的时候，收集三级分类的Id
     attrParams.categoryId = categoryStore.c3Id
   } else {
@@ -130,7 +131,17 @@ const save = () => {
   } else {
     ElMessage.success(attrParams.id ? "修改失败" : "添加失败")
   }
-
+}
+// 表单重置
+const resetForm = () => {
+  Object.assign(attrParams,
+    {
+      attrName: '',
+      attrValueList: [],
+      categoryId: '',
+      categoryLevel: 3
+    }
+  )
 }
 </script>
 
