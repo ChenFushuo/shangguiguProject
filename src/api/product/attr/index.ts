@@ -1,12 +1,13 @@
 // 属性相关API文件
 import request from "@/utils/request";
-import { AttrResponseData, CategoryResponentsData } from "./type";
+import { AttrResponseData, CategoryResponentsData, Attr } from "./type";
 
 enum API {
   C1_URL = "/admin/product/getCategory1", // 获取一级分类接口
   C2_URL = "/admin/product/getCategory2/", // 获取二级分类接口
   C3_URL = "/admin/product/getCategory3/", // 获取三级分类接口
   ATTR_URL = "/admin/product/attrInfoList/", // 获取分类下已有属性与属性值接口地址
+  ADDOREDITATTR = "/admin/product/saveAttrInfo", // 新增或者修改三级分类下的属性（一接口多用，参数不同）
 }
 
 // 获取一级分类
@@ -26,3 +27,6 @@ export const reqAttr = (
   request.get<any, AttrResponseData>(
     API.ATTR_URL + `${category1Id}/${category2Id}/${category3Id}`
   );
+// 新增或者修改已有接口
+export const reqAddOrEditAttr = (data: Attr) =>
+  request.post<any, any>(API.ADDOREDITATTR, data);

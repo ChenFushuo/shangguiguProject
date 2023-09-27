@@ -19,12 +19,11 @@ export interface CategoryResponentsData extends ResponentsData {
 }
 
 // 对应的属性与属性值的数据类型
-
 // 已有属性值对象的数据类型
 export interface AttrValue {
-  id: number;
+  id?: number;
   valueName: string;
-  attrId: number;
+  attrId?: number;
 }
 
 // 存储每一个属性值的数组类型
@@ -32,11 +31,11 @@ export type AttrValueList = AttrValue[];
 
 // data下已有属性对象
 export interface Attr {
-  id: number;
+  id?: number;
   attrName: string;
-  categoryId: number;
+  categoryId: number | string;
   categoryLevel: number;
-  attrValueLis: AttrValueList;
+  attrValueList: AttrValueList;
 }
 //存储每一个属性对象的数组的ts类型
 export type AttrList = Attr[];
