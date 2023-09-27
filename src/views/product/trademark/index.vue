@@ -18,7 +18,7 @@
           align="center"
           prop="tmName"></el-table-column>
         <el-table-column label="品牌LOGO" align="center">
-          <template #="{ row }">
+          <template #default="{ row }">
             <img
               v-if="!row.logoUrl.includes('http://')"
               :src="'http://' + row.logoUrl"
@@ -27,9 +27,9 @@
           </template>
         </el-table-column>
         <el-table-column label="操作" align="center">
-          <template #="{ row }">
+          <template #default="{ row }">
             <el-button
-              type="warning"
+              type="primary"
               size="small"
               icon="Edit"
               @click="addorEditTrademark(row)"></el-button>
@@ -39,7 +39,10 @@
               width="260px"
               @confirm="removeTrademark(row)">
               <template #reference>
-                <el-button type="danger" size="small" icon="Delete"></el-button>
+                <el-button
+                  type="primary"
+                  size="small"
+                  icon="Delete"></el-button>
               </template>
             </el-popconfirm>
           </template>
