@@ -48,8 +48,8 @@ export const reqAllSaleAttr = () =>
 // 添加一个新的SPU | 更新已经存在的SPU  data:新增的SPU | 已有的SPU
 export const reqAddOrUpdateSpu = (data: SpuData) => {
   if (data.id) {
-    return request.post<any, any>(API.ADDSPU_URL, data);
-  } else {
     return request.post<any, any>(API.UPDATESPU_URL, data);
+  } else {
+    return request.post<any, any>(API.ADDSPU_URL, data);
   }
 };

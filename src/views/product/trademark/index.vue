@@ -73,7 +73,7 @@
         <el-form-item label="品牌LOGO" label-width="100px" prop="logoUrl">
           <el-upload
             class="avatar-uploader"
-            :action="active"
+            :action="fileUpload"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload">
@@ -101,6 +101,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, reactive } from "vue";
+import { fileUpload } from "@/api";
 import {
   reqHasTrademark,
   reqAddorEditTrademark,
@@ -126,7 +127,6 @@ let total = ref<number>(0); // 表格数据总数
 let trademarkArr = ref<Records>(); // 表格数据
 let dialogFormVisible = ref<boolean>(false); // 控制对话框显示隐藏
 let title = ref<string>(""); // 对话框标题
-let active = ref<string>(""); // 上传图片服务器地址
 // 新增 || 编辑表单，收集数据
 let trademarkParams = reactive<Trademark>({
   tmName: "",
@@ -138,7 +138,6 @@ const rules = reactive<FormRules<Trademark>>({
 });
 
 onMounted(() => {
-  active.value = "/api/admin/product/fileUpload"; // 图片上传服务器地址初始化
   getHasTrademark();
 });
 

@@ -114,7 +114,7 @@ const addOrEditSpu = (row: SpuData) => {
   scene.value = 1;
   if (!row.id) {
   } else {
-    // 调用子组件实例方法，获取完整的已有SPU数据
+    // 修改---->调用子组件实例方法，获取完整的已有SPU数据
     spu.value.initHasSpuData(row);
   }
 };

@@ -9,7 +9,7 @@ export interface ResponseData {
 export interface SpuData {
   id?: number;
   spuName: string;
-  tmId: number;
+  tmId: number | string;
   description: string;
   spuImageList: null | SpuImg[];
   category3Id: string | number;
@@ -46,8 +46,10 @@ export interface AllTradeMark extends ResponseData {
 // 商品图片ts类型
 export interface SpuImg {
   id?: number;
-  imgName: string;
-  imgUrl: string;
+  imgName?: string;
+  imgUrl?: string;
+  name?: string;
+  url?: string;
   createTime?: string;
   updateTime?: string;
   spuId?: number;
@@ -63,7 +65,7 @@ export interface SaleAttrValue {
   createTime?: null;
   updateTime?: null;
   spuId?: number;
-  baseSaleAttrId: number;
+  baseSaleAttrId: number | string;
   saleAttrValueName: string;
   saleAttrName?: string;
   isChecked?: null;
@@ -78,9 +80,11 @@ export interface SaleAttr {
   createTime?: null;
   updateTime?: null;
   spuId?: number;
-  baseSaleAttrId: number;
+  baseSaleAttrId: number | string;
   saleAttrName: string;
   spuSaleAttrValueList: SpuSaleAttrValueList;
+  saleAttrValue?: string;
+  flag?: boolean;
 }
 
 // SPU已有销售属性接口返回数据ts类型
