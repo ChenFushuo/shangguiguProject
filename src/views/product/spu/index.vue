@@ -59,7 +59,10 @@
           :disabled="listLoading" />
       </div>
       <!-- 添加、修改SPU -->
-      <SpuForm v-show="scene === 1" @changeScene="changeScene"></SpuForm>
+      <SpuForm
+        ref="spu"
+        v-show="scene === 1"
+        @changeScene="changeScene"></SpuForm>
       <!-- 添加、修改SKU -->
       <SkuForm v-show="scene === 2"></SkuForm>
     </el-card>
@@ -82,7 +85,8 @@ let total = ref<number>(0); // 表格数据总数
 let scene = ref<number>(0); // 0展示已有SPU，1展示添加或者修改SPU的结构
 let categoryStore = useCategoryStore();
 let records = ref<Records>([]); // 存出已有的SPU属性
-// 肩痛三级分类ID的变化
+let spu = ref<any>();
+// 监听三级分类ID的变化
 watch(
   () => categoryStore.c3Id,
   () => {
@@ -108,6 +112,11 @@ const getHasSpu = async () => {
 const addOrEditSpu = (row: SpuData) => {
   // 场景切换  0 1
   scene.value = 1;
+  if (!row.id) {
+  } else {
+    // 调用子组件实例方法，获取完整的已有SPU数据
+    spu.value.initHasSpuData(row);
+  }
 };
 // 子组件自定义事件
 const changeScene = (num: number) => {

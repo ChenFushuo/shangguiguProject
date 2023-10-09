@@ -12,7 +12,7 @@ enum API {
   HASSPU_URL = "/admin/product/", // 获取已有SPU属性
   ALLTRADEMARK_UPL = "/admin/product/baseTrademark/getTrademarkList", // 获取全部品牌数据
   IMAGE_URL = "/admin/product/spuImageList/", // 获取某一个SPU下全部售卖商品图片数据
-  SPUHASSALEATTR_URL = "/admin/product/spuSaleAttrList/{spuId}", // 获取某一个SPU下全部已有销售属性数据
+  SPUHASSALEATTR_URL = "/admin/product/spuSaleAttrList/", // 获取某一个SPU下全部已有销售属性数据
   ALLSALEATTR_URL = "/admin/product/baseSaleAttrList", // 获取整个项目全部的销售属性
 }
 
