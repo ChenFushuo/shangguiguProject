@@ -5,6 +5,7 @@ import type {
   HasSaleAttrResponseData,
   HasSpuResponseData,
   SaleAttrResponseData,
+  SpuData,
   SpuHasImg,
 } from "./type";
 
@@ -14,6 +15,8 @@ enum API {
   IMAGE_URL = "/admin/product/spuImageList/", // 获取某一个SPU下全部售卖商品图片数据
   SPUHASSALEATTR_URL = "/admin/product/spuSaleAttrList/", // 获取某一个SPU下全部已有销售属性数据
   ALLSALEATTR_URL = "/admin/product/baseSaleAttrList", // 获取整个项目全部的销售属性
+  ADDSPU_URL = "/admin/product/saveSpuInfo", // 添加一个新的SPU
+  UPDATESPU_URL = "/admin/product/updateSpuInfo", // 更新已经存在的SPU
 }
 
 // 获取某个三级分类下已有SPU属性
@@ -41,3 +44,12 @@ export const reqSpuHasSaleAttr = (spuId: number) =>
 // 获取全部销售属性
 export const reqAllSaleAttr = () =>
   request.get<any, HasSaleAttrResponseData>(API.ALLSALEATTR_URL);
+
+// 添加一个新的SPU | 更新已经存在的SPU  data:新增的SPU | 已有的SPU
+export const reqAddOrUpdateSpu = (data: SpuData) => {
+  if (data.id) {
+    return request.post<any, any>(API.ADDSPU_URL, data);
+  } else {
+    return request.post<any, any>(API.UPDATESPU_URL, data);
+  }
+};

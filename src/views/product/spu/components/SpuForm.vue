@@ -74,7 +74,7 @@ import {
   SaleAttrResponseData,
   SpuData,
   SpuHasImg,
-  SpuImage,
+  SpuImg,
 } from "@/api/product/spu/type";
 import { Trademark } from "@/api/product/trademark/type";
 import { ref } from "vue";
@@ -86,7 +86,7 @@ const cancel = () => {
 };
 
 let allTradeMarkData = ref<Trademark[]>([]); // 存储已有SPU数据
-let imageList = ref<SpuImage[]>([]); // 商品图片
+let imageList = ref<SpuImg[]>([]); // 商品图片
 let saleAttr = ref<SaleAttr[]>([]); // SPU已有销售属性
 let allSaleAttr = ref<HasSaleAttr[]>([]); // 项目所有销售属性
 // 初始化第一个方法，获取spu数据

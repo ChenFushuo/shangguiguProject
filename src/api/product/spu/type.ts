@@ -9,11 +9,11 @@ export interface ResponseData {
 export interface SpuData {
   id?: number;
   spuName: string;
-  description: string;
-  category3Id: string | number;
   tmId: number;
-  spuSaleAttrList: null;
-  spuImageList: null;
+  description: string;
+  spuImageList: null | SpuImg[];
+  category3Id: string | number;
+  spuSaleAttrList: null | SaleAttr[];
 }
 
 // 数组包含元素都是已有的spu的数据类型
@@ -44,29 +44,29 @@ export interface AllTradeMark extends ResponseData {
 }
 
 // 商品图片ts类型
-export interface SpuImage {
-  id: number;
-  createTime: string;
-  updateTime: string;
-  spuId: number;
+export interface SpuImg {
+  id?: number;
   imgName: string;
   imgUrl: string;
+  createTime?: string;
+  updateTime?: string;
+  spuId?: number;
 }
 // 已有Spu照片，接口返回数据ts类型
 export interface SpuHasImg extends ResponseData {
-  data: SpuImage[];
+  data: SpuImg[];
 }
 
 // 已有销售属性对象ts类型
 export interface SaleAttrValue {
   id?: number;
-  createTime: null;
-  updateTime: null;
-  spuId: number;
+  createTime?: null;
+  updateTime?: null;
+  spuId?: number;
   baseSaleAttrId: number;
   saleAttrValueName: string;
-  saleAttrName: string;
-  isChecked: null;
+  saleAttrName?: string;
+  isChecked?: null;
 }
 
 // 已有销售属性数组类型
@@ -75,9 +75,9 @@ export type SpuSaleAttrValueList = SaleAttrValue[];
 // 销售属性对象ts类型
 export interface SaleAttr {
   id?: number;
-  createTime: null;
-  updateTime: null;
-  spuId: number;
+  createTime?: null;
+  updateTime?: null;
+  spuId?: number;
   baseSaleAttrId: number;
   saleAttrName: string;
   spuSaleAttrValueList: SpuSaleAttrValueList;
