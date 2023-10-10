@@ -32,12 +32,9 @@ export default defineConfig(({ command, mode }) => {
     server: {
       proxy: {
         [env.VITE_APP_BASE_API]: {
-          // 获取服务器地址
-          target: env.VITE_SERVE,
-          // 是否代理跨域
-          changeOrigin: true,
-          // 路径重写
-          rewrite: (path) => path.replace(/^\/api/, ""),
+          target: env.VITE_SERVE, // 获取服务器地址
+          changeOrigin: true, // 是否代理跨域
+          rewrite: (path) => path.replace(/^\/api/, ""), // 路径重写
         },
       },
     },

@@ -159,7 +159,7 @@ import { ElMessage } from "element-plus";
 let $emit = defineEmits(["changeScene"]);
 // 子组件点击取消按钮通知父组件，切换场景值为1
 const cancel = () => {
-  $emit("changeScene", 0);
+  $emit("changeScene", 0, false);
 };
 
 let allTradeMarkData = ref<Trademark[]>([]); // 存储已有SPU数据
@@ -178,7 +178,7 @@ let dialogVisible = ref<boolean>(false); // 图片蒙版显示(控制对话框�
 let dialogImageUrl = ref<string>(""); // 图片路径
 let saleAttrAndValueName = ref<string>(""); // 收集还未选择的SPU销售属性的id与属性名
 
-// 初始化第一个方法，获取spu数据
+// 修改SPU时，初始化方法，获取spu数据
 const initHasSpuData = async (spu: SpuData) => {
   // 存储已有的spu对象，将来在模板中展示
   spuParams.value = spu;
@@ -308,14 +308,42 @@ const save = async () => {
   let result = await reqAddOrUpdateSpu(spuParams.value);
   if (result.code === 200) {
     ElMessage.success(spuParams.value.id ? "更新成功" : "新增成功");
-    $emit("changeScene", 0); // 通知父组件切换场景为0
+    $emit("changeScene", 0, true); // 通知父组件切换场景为0
   } else {
     ElMessage.success(spuParams.value.id ? "更新失败" : "新增失败");
   }
 };
 
+// 添加一个新的SPU时，初始化方法
+const initAddSpu = async (c3Id: string | number) => {
+  clearFormData();
+  // 新增时，只需要获取品牌数据和销售属性数据就好
+  spuParams.value.category3Id = c3Id;
+  let result: AllTradeMark = await reqAllTradeMark(); // 获取全部品牌数据
+  allTradeMarkData.value = result.data; // 存储全部品牌数据
+
+  let result1: HasSaleAttrResponseData = await reqAllSaleAttr(); // 获取整个项目全部的SPU销售属性
+  allSaleAttr.value = result1.data; // 项目所有销售属性
+};
+
+// 清空新增、修改操作的表单收集数据
+const clearFormData = () => {
+  Object.assign(spuParams.value, {
+    id: "",
+    category3Id: "", //收集三级分类的ID
+    spuName: "", //SPU的名字
+    description: "", //SPU的描述
+    tmId: "", //品牌的ID
+    spuImageList: [],
+    spuSaleAttrList: [],
+  });
+  imageList.value = []; // 清空所有已上传的照片
+  saleAttr.value = []; // 清空所有销售属性
+  saleAttrAndValueName.value = ""; // 清空销售属性下拉框绑定值
+};
+
 // 对外暴露方法
-defineExpose({ initHasSpuData });
+defineExpose({ initHasSpuData, initAddSpu });
 </script>
 
 <style scoped></style>

@@ -19,7 +19,7 @@ export const reqC2 = (category1Id: number | string) =>
 // 获取三级分类
 export const reqC3 = (category2Id: number | string) =>
   request.get<any, CategoryResponentsData>(API.C3_URL + category2Id);
-// 获取对应分类下所有对应的属性与属性值
+// 获取对应分类下所有对应的平台属性与属性值
 export const reqAttr = (
   category1Id: number | string,
   category2Id: number | string,
