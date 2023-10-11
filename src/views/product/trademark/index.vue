@@ -18,7 +18,7 @@
           align="center"
           prop="tmName"></el-table-column>
         <el-table-column label="品牌LOGO" align="center">
-          <template #default="{ row }">
+          <template #="{ row }">
             <img
               v-if="!row.logoUrl.includes('http://')"
               :src="'http://' + row.logoUrl"
@@ -27,7 +27,7 @@
           </template>
         </el-table-column>
         <el-table-column label="操作" align="center">
-          <template #default="{ row }">
+          <template #="{ row }">
             <el-button
               type="primary"
               size="small"

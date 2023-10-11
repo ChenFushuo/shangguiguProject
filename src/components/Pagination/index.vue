@@ -2,7 +2,7 @@
   <el-pagination
     :current-page="props.page"
     :page-size="props.limit"
-    :page-sizes="[3, 5, 7, 9, 11]"
+    :page-sizes="props.pageSizes"
     background
     layout="prev, pager, next, jumper, ->, sizes, total"
     :total="props.total"
@@ -23,6 +23,10 @@ const props = defineProps({
   limit: {
     type: Number,
     default: 1,
+  },
+  pageSizes: {
+    type: Array,
+    default: [3, 5, 7, 9, 11],
   },
   // 数据总条数
   total: {

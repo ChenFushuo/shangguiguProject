@@ -26,7 +26,7 @@
             prop="description"
             show-overflow-tooltip=""></el-table-column>
           <el-table-column label="SPU操作">
-            <template #default="{ row }">
+            <template #="{ row }">
               <el-button
                 type="primary"
                 size="small"
@@ -84,7 +84,7 @@
           <el-table-column label="SKU价格" prop="price"></el-table-column>
           <el-table-column label="SKU重量" prop="weight"></el-table-column>
           <el-table-column label="SKU图片">
-            <template #default="{ row }">
+            <template #="{ row }">
               <img
                 :src="row.skuDefaultImg"
                 alt=""

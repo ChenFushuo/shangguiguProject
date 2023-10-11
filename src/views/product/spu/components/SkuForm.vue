@@ -64,13 +64,13 @@
           align="center"
           width="80"></el-table-column>
         <el-table-column labe="图片">
-          <template #default="{ row }">
+          <template #="{ row }">
             <img :src="row.imgUrl" alt="" style="width: 100px" />
           </template>
         </el-table-column>
         <el-table-column labe="名称" prop="imgName"></el-table-column>
         <el-table-column labe="操作">
-          <template #default="{ row }">
+          <template #="{ row }">
             <el-button size="small" type="primary" @click="handle(row)">
               设置默认
             </el-button>

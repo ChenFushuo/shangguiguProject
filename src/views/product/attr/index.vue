@@ -24,7 +24,7 @@
             width="120px"
             prop="attrName"></el-table-column>
           <el-table-column label="属性值名称">
-            <template #default="{ row }">
+            <template #="{ row }">
               <el-tag
                 v-for="item in row.attrValueList"
                 :key="item.id"
@@ -34,7 +34,7 @@
             </template>
           </el-table-column>
           <el-table-column label="操作" align="center" width="120px">
-            <template #default="{ row }">
+            <template #="{ row }">
               <el-button
                 type="primary"
                 size="small"
