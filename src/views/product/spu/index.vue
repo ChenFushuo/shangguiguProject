@@ -186,7 +186,7 @@ const findSku = async (row: SpuData) => {
 
 // 删除已有SPU
 const deleteSpu = async (row: SpuData) => {
-  let result = await reqRemoveSpu(row.id as number);
+  let result: any = await reqRemoveSpu(row.id as number);
   if (result.code === 200) {
     ElMessage.success("删除成功");
     getHasSpu();

@@ -163,11 +163,12 @@ const save = async () => {
   skuParams.skuSaleAttrValueList = saleArr.value.reduce(
     (prev: any, next: any) => {
       if (next.saleIdAndValueId) {
-        let [saleAttrId, saleAttrValueId] = next.saleIdAndValueId.slipt(":");
-        prev.push(saleAttrId, saleAttrValueId);
+        let [saleAttrId, saleAttrValueId] = next.saleIdAndValueId.split(":");
+        prev.push({ saleAttrId, saleAttrValueId });
       }
       return prev;
-    }
+    },
+    []
   );
   // 发送请求
   let result: any = await reqAddSku(skuParams);
