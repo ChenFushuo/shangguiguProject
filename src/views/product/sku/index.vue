@@ -31,7 +31,11 @@
             size="small"
             :icon="row.isSale === 0 ? 'Top' : 'bottom'"
             @click="updateSale(row)"></el-button>
-          <el-button type="primary" size="small" icon="Edit"></el-button>
+          <el-button
+            type="primary"
+            size="small"
+            icon="Edit"
+            @click="updateSku"></el-button>
           <el-button type="info" size="small" icon="InfoFilled"></el-button>
           <el-button type="danger" size="small" icon="Delete"></el-button>
         </template>
@@ -78,7 +82,6 @@ const getHasSku = async () => {
 
 // 上架或下架的按钮点击回调
 const updateSale = async (row: SkuData) => {
-  console.log(row);
   // 当前商品isSale === 1，说明当前商品处于上架状态，需要下架，反之则调换
   if (row.isSale === 1) {
     let result: any = await reqCancelSale(row.id as number);
@@ -93,6 +96,11 @@ const updateSale = async (row: SkuData) => {
       getHasSku();
     }
   }
+};
+
+//更新已有的SKU
+const updateSku = () => {
+  ElMessage.success("功能正在开发中……请耐心等候更新……");
 };
 </script>
 
