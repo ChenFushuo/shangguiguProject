@@ -47,7 +47,7 @@
                 @confirm="deleteAttr(row.id)">
                 <template #reference>
                   <el-button
-                    type="primary"
+                    type="danger"
                     size="small"
                     icon="Delete"></el-button>
                 </template>
@@ -101,7 +101,7 @@
           <el-table-column label="属性值操作">
             <template #default="{ $index }">
               <el-button
-                type="primary"
+                type="danger"
                 size="small"
                 icon="Delete"
                 @click="attrParams.attrValueList.splice($index, 1)"></el-button>
@@ -112,10 +112,10 @@
           type="primary"
           size="default"
           @click="save"
-          :disabled="attrParams.attrValueList.length <= 0"
-          >保存</el-button
-        >
-        <el-button plain size="default" @click="cancel">取消</el-button>
+          :disabled="attrParams.attrValueList.length <= 0">
+          保存
+        </el-button>
+        <el-button size="default" @click="cancel">取消</el-button>
       </div>
     </el-card>
   </div>

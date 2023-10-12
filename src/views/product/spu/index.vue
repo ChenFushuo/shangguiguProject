@@ -51,7 +51,7 @@
                 @confirm="deleteSpu(row)">
                 <template #reference>
                   <el-button
-                    type="primary"
+                    type="danger"
                     size="small"
                     icon="Delete"
                     title="删除SPU"></el-button>

@@ -122,12 +122,10 @@
         type="primary"
         size="default"
         :disabled="saleAttr.length <= 0"
-        @click="save"
-        >保存</el-button
-      >
-      <el-button type="primary" plain size="default" @click="cancel">
-        取消
+        @click="save">
+        保存
       </el-button>
+      <el-button size="default" @click="cancel">取消</el-button>
     </el-form-item>
   </el-form>
 </template>
