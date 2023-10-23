@@ -204,8 +204,6 @@ const handleClose = () => {
 // 删除sku回调
 const deleteSku = async (row: SkuData) => {
   let result: any = await reqRemoveSku(row.id as number);
-  console.log(result);
-
   if (result.code === 200) {
     ElMessage.success("删除成功");
     getHasSku();
