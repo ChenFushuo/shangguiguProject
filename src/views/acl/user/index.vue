@@ -78,7 +78,7 @@
               编辑
             </el-button>
             <el-popconfirm
-              :title="`你确定删除这个${row.userName}吗?`"
+              :title="`你确定删除${row.userName}吗?`"
               width="200px"
               @confirm="deleteUser(row)">
               <template #reference>

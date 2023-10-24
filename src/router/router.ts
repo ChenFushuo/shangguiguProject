@@ -32,16 +32,6 @@ export const constantRouter = [
       },
     ],
   },
-  // 数据大屏
-  {
-    path: "/screen",
-    name: "Screen",
-    component: () => import("@/views/screen/index.vue"),
-    meta: {
-      title: "数据大屏",
-      icon: "Monitor",
-    },
-  },
   // 权限管理
   {
     path: "/acl",

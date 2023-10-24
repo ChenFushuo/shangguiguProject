@@ -15,7 +15,7 @@ import globallyComponents from "@/components";
 // 引入路由注册
 import router from "@/router";
 // 引入路由守卫
-import "./permisstion";
+import "./permission";
 // 引入仓库
 import pinia from "@/store";
 
