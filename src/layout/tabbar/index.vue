@@ -26,7 +26,6 @@ export default {
   height: 100%;
   display: flex;
   justify-content: space-between;
-  background: $base-tabbar-background;
 
   .tabbar_left {
     display: flex;

@@ -93,11 +93,9 @@ export default {
     position: fixed;
     width: $base-tabbar-width;
     height: $base-tabbar-height;
-    background: $base-tabbar-background;
     color: $base-color-black;
     top: 0;
     left: $base-menu-width;
-    border-bottom: 1px solid #ccc;
     transition: all 0.3s;
 
     &.collapse {
@@ -110,7 +108,6 @@ export default {
     position: absolute;
     width: $base-main-width;
     height: $base-main-height;
-    background-color: $base-appmain-background;
     top: $base-tabbar-height;
     left: $base-menu-width;
     padding: 15px;

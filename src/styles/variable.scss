@@ -12,14 +12,12 @@ $base-slider-scrollbar-height: calc(
 
 // 导航相关——————————————————————————————————————————————————————————————————————-
 $base-tabbar-height: 60px; // 顶部导航的高度
-$base-tabbar-background: #ffffff; // 顶部导航背景色
 $base-tabbar-width: calc(100% - $base-menu-width); // 菜单收起的（tabbar）宽度
 $base-tabbar-width-collapse: calc(
   100% - $base-menu-min-width
 ); // 菜单展开的（tabbar）宽度
 
 // 主体相关——————————————————————————————————————————————————————————————————————-
-$base-appmain-background: #f4f4f4; // 内容展示区域背景色
 $base-main-width: calc(100% - $base-menu-width); // 菜单收起的（主体）宽度
 $base-main-width-collapse: calc(
   100% - $base-menu-min-width
