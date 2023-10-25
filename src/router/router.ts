@@ -32,6 +32,17 @@ export const constantRouter = [
       },
     ],
   },
+  // 数据大屏幕
+  {
+    path: "/screen",
+    component: () => import("@/views/screen/index.vue"),
+    name: "Screen",
+    meta: {
+      hidden: false,
+      title: "数据大屏",
+      icon: "Platform",
+    },
+  },
   // 权限管理
   {
     path: "/acl",
