@@ -21,7 +21,10 @@
       <!-- 表单组件 -->
       <el-form>
         <el-form-item label="主题颜色">
-          <el-color-picker v-model="color" show-alpha />
+          <el-color-picker
+            v-model="color"
+            show-alpha
+            @change="setPrimaryColor" />
         </el-form-item>
         <el-form-item label="暗黑模式">
           <el-switch
@@ -67,7 +70,7 @@ let userStore = useUserStore(); // 用户相关的仓库数据
 let $router = useRouter(); // 获取路由器对象
 let $route = useRoute(); // 获取路由对象
 
-const color = ref("rgba(255, 69, 0, 0.68)");
+const color = ref("rgba(90,156,248)");
 let dark = ref<boolean>(false); // 暗黑模式开关状态收集
 let html = ref<any>(); // 整个页面的html对象
 
@@ -96,6 +99,12 @@ const fullscreen = () => {
 const changeDark = (val: boolean) => {
   // 判断html是否有dark的类名
   html.value.className = val ? "dark" : "";
+};
+// 设置主题颜色
+const setPrimaryColor = (val: any) => {
+  const el = document.documentElement;
+  getComputedStyle(el).getPropertyValue(`--el-color-primary`);
+  el.style.setProperty("--el-color-primary", val);
 };
 // 退出登录
 const logout = async () => {
