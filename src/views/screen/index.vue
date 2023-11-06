@@ -5,7 +5,7 @@
         <Top />
       </div>
       <div class="bottom">
-        <div class="left">左</div>
+        <div class="left">左 ceshi1tijiaio1o</div>
         <div class="center">中</div>
         <div class="right">右</div>
       </div>
