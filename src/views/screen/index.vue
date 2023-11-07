@@ -66,6 +66,7 @@ window.onresize = () => {
         height: 1040px;
         display: flex;
         flex-direction: column;
+        box-sizing: border-box;
         .tourist {
           flex: 1.2;
         }
