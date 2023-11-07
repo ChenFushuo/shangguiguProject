@@ -5,9 +5,13 @@
         <Top />
       </div>
       <div class="bottom">
-        <div class="left">左</div>
-        <div class="center">中</div>
-        <div class="right">右</div>
+        <div class="left">
+          <Tourist class="tourist"></Tourist>
+          <Sex class="sex"></Sex>
+          <Age class="sge"></Age>
+        </div>
+        <div class="center"></div>
+        <div class="right"></div>
       </div>
     </div>
   </div>
@@ -16,6 +20,12 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import Top from "./components/top/index.vue";
+
+// 左侧三个相应子组件
+import Tourist from "./components/tourist/index.vue";
+import Sex from "./components/sex/index.vue";
+import Age from "./components/age/index.vue";
+
 let screen = ref();
 onMounted(() => {
   screen.value.style.transform = `scale(${getScale()}) translate(-50%,-50%)`;
@@ -53,6 +63,18 @@ window.onresize = () => {
       display: flex;
       .left {
         flex: 1;
+        height: 1040px;
+        display: flex;
+        flex-direction: column;
+        .tourist {
+          flex: 1.2;
+        }
+        .sex {
+          flex: 1;
+        }
+        .sge {
+          flex: 1;
+        }
       }
       .center {
         flex: 2;
