@@ -54,8 +54,9 @@ onMounted(() => {
   margin-top: 10px;
   background: url("../../images/dataScreen-main-lb.png") no-repeat;
   background-size: 100% 100%;
+
   .top {
-    margin: 20px;
+    margin-top: 10px;
     .title {
       color: white;
       font-size: 20px;
