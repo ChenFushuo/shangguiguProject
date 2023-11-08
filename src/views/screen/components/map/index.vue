@@ -140,4 +140,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.map_box {
+}
+</style>

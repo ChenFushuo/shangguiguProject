@@ -80,6 +80,7 @@ window.onresize = () => {
         flex: 1;
         display: flex;
         flex-direction: column;
+        margin-top: 10px;
         .tourist {
           flex: 1.2;
         }
@@ -94,6 +95,9 @@ window.onresize = () => {
         flex: 1.5;
         display: flex;
         flex-direction: column;
+        margin: 0px 10px;
+        padding-top: 40px;
+        box-sizing: border-box;
         .map {
           flex: 4;
         }
@@ -105,7 +109,6 @@ window.onresize = () => {
         flex: 1;
         display: flex;
         flex-direction: column;
-        margin-left: 20px;
         .rank {
           flex: 1.5;
         }
