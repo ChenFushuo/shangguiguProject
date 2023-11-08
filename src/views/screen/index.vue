@@ -14,7 +14,11 @@
           <Map class="map"></Map>
           <Line class="line"> </Line>
         </div>
-        <div class="right"></div>
+        <div class="right">
+          <Rank class="rank"></Rank>
+          <Year class="year"></Year>
+          <Couter class="couter"></Couter>
+        </div>
       </div>
     </div>
   </div>
@@ -31,12 +35,16 @@ import Age from "./components/age/index.vue";
 // 中间两个组件
 import Map from "./components/map/index.vue";
 import Line from "./components/line/index.vue";
+// 引入右侧三个子组件
+import Rank from "./components/rank/index.vue";
+import Year from "./components/year/index.vue";
+import Couter from "./components/couter/index.vue";
 
 let screen = ref();
 onMounted(() => {
   screen.value.style.transform = `scale(${getScale()}) translate(-50%,-50%)`;
 });
-//定义大屏缩放比例
+// 定义大屏缩放比例
 function getScale(w = 1920, h = 1080) {
   const ww = window.innerWidth / w;
   const wh = window.innerHeight / h;
@@ -67,9 +75,9 @@ window.onresize = () => {
     }
     .bottom {
       display: flex;
+      height: 1040px;
       .left {
         flex: 1;
-        height: 1040px;
         display: flex;
         flex-direction: column;
         .tourist {
@@ -83,7 +91,7 @@ window.onresize = () => {
         }
       }
       .center {
-        flex: 2;
+        flex: 1.5;
         display: flex;
         flex-direction: column;
         .map {
@@ -95,6 +103,18 @@ window.onresize = () => {
       }
       .right {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+        .rank {
+          flex: 1.5;
+        }
+        .year {
+          flex: 1;
+        }
+        .couter {
+          flex: 1;
+        }
       }
     }
   }

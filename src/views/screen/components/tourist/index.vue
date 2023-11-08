@@ -1,8 +1,10 @@
 <template>
   <div class="box">
     <div class="top">
-      <p class="title">实时游客统计</p>
-      <p class="bg"></p>
+      <div>
+        <p class="title">实时游客统计</p>
+        <p class="bg"></p>
+      </div>
       <p class="right">可预约总量<span>100000</span>人</p>
     </div>
     <div class="number">
@@ -31,7 +33,7 @@ onMounted(() => {
     // 系列：决定展示什么样的图形图表
     series: {
       type: "liquidFill",
-      radius: "90%",
+      radius: "80%",
       data: [0.4, 0.35, 0.3],
       waveAnimation: true,
       animationDuration: 3,
@@ -56,7 +58,10 @@ onMounted(() => {
   background-size: 100% 100%;
 
   .top {
-    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px 0;
     .title {
       color: white;
       font-size: 20px;
@@ -77,7 +82,9 @@ onMounted(() => {
     }
   }
   .number {
-    padding: 10px 20px;
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 40px;
     display: flex;
     span {
       flex: 1;
@@ -92,7 +99,7 @@ onMounted(() => {
   }
   .charts {
     width: 100%;
-    height: 250px;
+    height: 200px;
   }
 }
 </style>
