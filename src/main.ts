@@ -12,7 +12,11 @@ import router from "@/router"; // 引入路由注册
 import "./permission"; // 引入路由守卫
 import pinia from "@/store"; // 引入仓库
 
-createApp(App)
+import { isHasButton } from "./directive/has"; // 引入自定义指令
+
+let app = createApp(App);
+isHasButton(app);
+app
   .use(ElementPlus, {
     locale: zhCn, // element-plus国际化配置（默认英文）
   })

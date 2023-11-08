@@ -7,6 +7,7 @@
         size="default"
         icon="Plus"
         @click="addorEditTrademark"
+        v-has="'btn.Trademark.add'"
         >添加品牌</el-button
       >
       <!-- 表格组件，展示已经存在的品牌-列表 -->
@@ -32,14 +33,19 @@
               type="primary"
               size="small"
               icon="Edit"
-              @click="addorEditTrademark(row)"></el-button>
+              @click="addorEditTrademark(row)"
+              v-has="'btn.Trademark.update'"></el-button>
             <el-popconfirm
               :title="`请问您是否确认删除(${row.tmName})?`"
               icon="Delete"
               width="260px"
               @confirm="removeTrademark(row)">
               <template #reference>
-                <el-button type="danger" size="small" icon="Delete"></el-button>
+                <el-button
+                  type="danger"
+                  size="small"
+                  icon="Delete"
+                  v-has="'btn.Trademark.remove'"></el-button>
               </template>
             </el-popconfirm>
           </template>

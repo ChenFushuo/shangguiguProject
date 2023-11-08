@@ -9,7 +9,8 @@
           type="primary"
           icon="Plus"
           :disabled="categoryStore.c3Id === ''"
-          @click="addOrEditAttr">
+          @click="addOrEditAttr"
+          v-has="'btn.Attr.add'">
           添加属性
         </el-button>
         <el-table style="margin: 10px 0" :data="attrArr">
@@ -39,7 +40,8 @@
                 type="primary"
                 size="small"
                 icon="Edit"
-                @click="addOrEditAttr(row)"></el-button>
+                @click="addOrEditAttr(row)"
+                v-has="'btn.Attr.update'"></el-button>
               <el-popconfirm
                 :title="`请问您是否确认删除(${row.attrName})?`"
                 icon="Delete"
@@ -47,6 +49,7 @@
                 @confirm="deleteAttr(row.id)">
                 <template #reference>
                   <el-button
+                    v-has="'btn.Attr.remove'"
                     type="danger"
                     size="small"
                     icon="Delete"></el-button>

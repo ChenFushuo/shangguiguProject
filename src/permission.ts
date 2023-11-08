@@ -32,7 +32,7 @@ router.beforeEach(async (to: any, from: any, next) => {
       } else {
         try {
           await userStore.userInfo();
-          next();
+          next({ ...to });
         } catch (error: any) {
           ElMessage.error(error);
           // token过期 || 用户手动更改了token

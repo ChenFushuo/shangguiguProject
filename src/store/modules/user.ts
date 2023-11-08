@@ -7,16 +7,48 @@ import type {
 } from "@/api/users/type";
 import { UserState } from "./types/type";
 import { GET_TOKEN, REMOVE_TOKEN, SET_TOKEN } from "@/utils/token"; // 操作本地存储的方法
-import { constantRouter } from "@/router/router"; // 引入常量菜单
+import { constantRouter, asyncRoute, anyRoute } from "@/router/router"; // 引入常量菜单
+
+import router from "@/router";
+
+// 异步路由过滤
+const filterAsyncRoute = (hasAsyncRoutes: any, routes: any) => {
+  return hasAsyncRoutes.filter((item: any) => {
+    if (routes.includes(item.name)) {
+      if (item.children && item.children.length > 0) {
+        item.children = filterAsyncRoute(item.children, routes);
+      }
+      return true;
+    }
+  });
+};
+
+const cloneDeep = (value: any) => {
+  if (value === null || typeof value !== "object") {
+    return value;
+  }
+
+  let cloned: any = Array.isArray(value) ? [] : {};
+
+  for (let key in value) {
+    if (Object.prototype.hasOwnProperty.call(value, key)) {
+      cloned[key] =
+        typeof value[key] === "object" ? cloneDeep(value[key]) : value[key];
+    }
+  }
+
+  return cloned;
+};
 
 const useUserStore = defineStore("User", {
   //  数据
   state: (): UserState => {
     return {
       token: GET_TOKEN(), //用户的token 身份令牌,内存中取值，持久化存储方案
-      menuRoutes: constantRouter, // 仓库存储生成菜单需要的路由信息
+      menuRoutes: [], // 仓库存储生成菜单需要的路由信息
       username: "",
       avatar: "",
+      buttons: [],
     };
   },
   //  逻辑
@@ -44,6 +76,19 @@ const useUserStore = defineStore("User", {
       if (result.code == 200) {
         this.username = result.data.name;
         this.avatar = result.data.avatar;
+        this.buttons = result.data.buttons;
+
+        //计算当前用户需要展示的异步路由
+        let userAsyncRoute: any = filterAsyncRoute(
+          cloneDeep(asyncRoute),
+          result.data.routes
+        );
+        //菜单需要的数据整理完毕
+        this.menuRoutes = [...constantRouter, ...userAsyncRoute, anyRoute];
+        //目前路由器管理的只有常量路由:用户计算完毕异步路由、任意路由动态追加
+        [...userAsyncRoute, anyRoute].forEach((route: any) => {
+          router.addRoute(route);
+        });
         return result;
       } else {
         return Promise.reject(result.message);

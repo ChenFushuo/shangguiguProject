@@ -11,7 +11,8 @@
           size="default"
           icon="Plus"
           :disabled="categoryStore.c3Id === ''"
-          @click="addOrEditSpu">
+          @click="addOrEditSpu"
+          v-has="'btn.Spu.add'">
           添加SPU
         </el-button>
         <el-table style="margin: 10px 0" border :data="records">
@@ -32,19 +33,22 @@
                 size="small"
                 icon="Plus"
                 title="添加SKU"
-                @click="addSku(row)"></el-button>
+                @click="addSku(row)"
+                v-has="'btn.Spu.addsku'"></el-button>
               <el-button
                 type="primary"
                 size="small"
                 icon="Edit"
                 title="修改SPU"
-                @click="addOrEditSpu(row)"></el-button>
+                @click="addOrEditSpu(row)"
+                v-has="'btn.Spu.update'"></el-button>
               <el-button
                 type="primary"
                 size="small"
                 icon="View"
                 title="查看SKU列表"
-                @click="findSku(row)"></el-button>
+                @click="findSku(row)"
+                v-has="'btn.Spu.skus'"></el-button>
               <el-popconfirm
                 :title="`你确定删除这个${row.spuName}吗?`"
                 width="200px"
@@ -54,7 +58,8 @@
                     type="danger"
                     size="small"
                     icon="Delete"
-                    title="删除SPU"></el-button>
+                    title="删除SPU"
+                    v-has="'btn.Spu.delete'"></el-button>
                 </template>
               </el-popconfirm>
             </template>

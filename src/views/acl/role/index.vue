@@ -27,7 +27,8 @@
         type="primary"
         size="default"
         icon="Plus"
-        @click="addOrEditRole">
+        @click="addOrEditRole"
+        v-has="'btn.Role.add'">
         添加职位
       </el-button>
       <el-table class="table" :data="allRole" border>
@@ -58,14 +59,16 @@
               type="primary"
               size="small"
               icon="User"
-              @click="setPermission(row)">
+              @click="setPermission(row)"
+              v-has="'btn.Role.assgin'">
               分配角色
             </el-button>
             <el-button
               type="primary"
               size="small"
               icon="Edit"
-              @click="addOrEditRole(row)">
+              @click="addOrEditRole(row)"
+              v-has="'btn.Role.update'">
               编辑
             </el-button>
             <el-popconfirm
@@ -73,7 +76,11 @@
               width="200px"
               @confirm="deleteRole(row)">
               <template #reference>
-                <el-button type="danger" size="small" icon="Delete">
+                <el-button
+                  v-has="'btn.Role.remove'"
+                  type="danger"
+                  size="small"
+                  icon="Delete">
                   删除
                 </el-button>
               </template>

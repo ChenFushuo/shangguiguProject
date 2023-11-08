@@ -1,3 +1,4 @@
+import { PermissionList } from "@/api/acl/menu/type";
 import Layout from "@/layout/index.vue";
 // 对外暴露配置常量路由
 export const constantRouter = [
@@ -43,6 +44,21 @@ export const constantRouter = [
       icon: "Platform",
     },
   },
+  // 404
+  {
+    path: "/404",
+    component: () => import("@/views/404/index.vue"),
+    name: "404", // 命名路由
+    meta: {
+      title: "404",
+      icon: "DocumentDelete",
+      hidden: true,
+    },
+  },
+];
+
+// 异步路由
+export const asyncRoute = [
   // 权限管理
   {
     path: "/acl",
@@ -132,23 +148,13 @@ export const constantRouter = [
       },
     ],
   },
-  // 404
-  {
-    path: "/404",
-    component: () => import("@/views/404/index.vue"),
-    name: "404", // 命名路由
-    meta: {
-      title: "404",
-      icon: "DocumentDelete",
-      hidden: true,
-    },
-  },
-  // *暂无此路由
-  {
-    path: "/:pathMatch(.*)*",
-    meta: {
-      hidden: true,
-    },
-    redirect: "/404",
-  },
 ];
+
+// 无页面路由
+export const anyRoute = {
+  path: "/:pathMatch(.*)*",
+  meta: {
+    hidden: true,
+  },
+  redirect: "/404",
+};

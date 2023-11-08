@@ -30,17 +30,20 @@
             :type="row.isSale === 0 ? 'info' : 'primary'"
             size="small"
             :icon="row.isSale === 0 ? 'Top' : 'bottom'"
-            @click="updateSale(row)"></el-button>
+            @click="updateSale(row)"
+            v-has="'btn.Sku.updown'"></el-button>
           <el-button
             type="primary"
             size="small"
             icon="Edit"
-            @click="updateSku"></el-button>
+            @click="updateSku"
+            v-has="'btn.Sku.update'"></el-button>
           <el-button
             type="info"
             size="small"
             icon="InfoFilled"
-            @click="findSku(row)"></el-button>
+            @click="findSku(row)"
+            v-has="'btn.Sku.detail'"></el-button>
           <el-popconfirm
             :title="`你确定删除这个${row.skuName}吗?`"
             width="200px"
@@ -50,7 +53,8 @@
                 type="danger"
                 size="small"
                 icon="Delete"
-                title="删除SKU"></el-button>
+                title="删除SKU"
+                v-has="'btn.Sku.remove'"></el-button>
             </template>
           </el-popconfirm>
         </template>

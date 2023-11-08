@@ -24,7 +24,8 @@
         type="primary"
         size="default"
         icon="Plus"
-        @click="addOrEditUser">
+        @click="addOrEditUser"
+        v-has="'btn.User.add'">
         添加用户
       </el-button>
       <el-button
@@ -32,7 +33,8 @@
         size="default"
         icon="Delete"
         :disabled="selectIdArr.length <= 0"
-        @click="deleteSelectUser">
+        @click="deleteSelectUser"
+        v-has="'btn.User.remove'">
         批量删除
       </el-button>
       <!-- table展示用户信息 -->
@@ -67,14 +69,16 @@
               type="primary"
               size="small"
               icon="User"
-              @click="setRole(row)">
+              @click="setRole(row)"
+              v-has="'btn.User.assgin'">
               分配角色
             </el-button>
             <el-button
               type="primary"
               size="small"
               icon="Edit"
-              @click="addOrEditUser(row)">
+              @click="addOrEditUser(row)"
+              v-has="'btn.User.update'">
               编辑
             </el-button>
             <el-popconfirm
@@ -82,7 +86,11 @@
               width="200px"
               @confirm="deleteUser(row)">
               <template #reference>
-                <el-button type="danger" size="small" icon="Delete">
+                <el-button
+                  v-has="'btn.User.remove'"
+                  type="danger"
+                  size="small"
+                  icon="Delete">
                   删除
                 </el-button>
               </template>

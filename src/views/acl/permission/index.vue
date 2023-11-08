@@ -15,14 +15,16 @@
             type="primary"
             size="small"
             :disabled="row.level === 4"
-            @click="addOrEditPermission(row, 'add')">
+            @click="addOrEditPermission(row, 'add')"
+            v-has="'btn.Permission.add'">
             {{ row.level === 3 ? "添加功能" : "添加菜单" }}
           </el-button>
           <el-button
             type="primary"
             size="small"
             :disabled="row.level === 1"
-            @click="addOrEditPermission(row, 'edit')">
+            @click="addOrEditPermission(row, 'edit')"
+            v-has="'btn.Permission.update'">
             编辑
           </el-button>
           <el-popconfirm
@@ -30,7 +32,11 @@
             @confirm="deletePermission(row)"
             width="200px">
             <template #reference>
-              <el-button type="danger" size="small" :disabled="row.level === 1">
+              <el-button
+                v-has="'btn.Permission.remove'"
+                type="danger"
+                size="small"
+                :disabled="row.level === 1">
                 删除
               </el-button>
             </template>
