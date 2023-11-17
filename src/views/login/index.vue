@@ -47,7 +47,7 @@ import { reactive, ref } from "vue";
 import useUserStore from "@/store/modules/user";
 // 引入路由器
 import { useRoute, useRouter } from "vue-router";
-// 引入自定义工具方法1
+// 引入自定义工具方法
 import { getTime } from "@/utils/times";
 // 引入element-plus提示框
 import { ElNotification } from "element-plus";
