@@ -9,7 +9,7 @@ import chinaJSON from "./china.json";
 let map = ref();
 
 // 注册中国地图
-echarts.registerMap("china", chinaJSON);
+echarts.registerMap("china", chinaJSON as any);
 onMounted(() => {
   let myCharts = echarts.init(map.value);
   let option = {
@@ -140,7 +140,4 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-.map_box {
-}
-</style>
+<style lang="scss" scoped></style>

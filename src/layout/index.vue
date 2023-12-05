@@ -40,8 +40,8 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-import Logo from "./logo/index.vue";
-import Menu from "./menu/index.vue";
+import Logo from "./Logo/index.vue";
+import Menu from "./Menu/index.vue";
 import Main from "./main/index.vue";
 import Tabbar from "./tabbar/index.vue";
 import useUserStore from "@/store/modules/user";
