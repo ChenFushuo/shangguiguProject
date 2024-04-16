@@ -57,7 +57,7 @@ let loginFormRef = ref();
 let $router = useRouter(); // 使用路由器
 let $route = useRoute(); // 使用路由器
 let loading = ref(false); // 控制按钮加载状态
-let loginForm = reactive({ username: "admin", password: "atguigu123" }); // 初始化表单绑定数据
+let loginForm = reactive({ username: "admin", password: "111111" }); // 初始化表单绑定数据
 // 自定义表单校验规则 账号-密码校验
 const validatorUserName = (rule: any, value: any, callback: Function) => {
   // rule：校验规则对象  value: 表单元素文本内容 callback：校验通过与否的回调函数
